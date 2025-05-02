@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'departments',
     'teams',
     'users',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#PostgreSQL Configuration
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'your_database_name',
+#         'USER': 'your_postgres_user',
+#         'PASSWORD': 'your_password',
+#         'HOST': 'localhost',  # or your DB host
+#         'PORT': '5432',        # default PostgreSQL port
+#     }
+# }
 
 
 # Password validation

@@ -27,4 +27,8 @@ urlpatterns = [
     path('department/', include('departments.urls')),
     path('teams/', include('teams.urls')),
     # path('tasks/', include('tasks.urls')),
+    
+    # API routes
+    path('api/organization/', include('organizations.api_urls')),
+    # path('api/department/', include('departments.api_urls')),
 ]
