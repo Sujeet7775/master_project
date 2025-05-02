@@ -20,12 +20,11 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    path('', include('user.urls')),  # Home or public routes
+    path('', include('users.urls')),  # Home or public routes
 
     # App-specific routes
-    path('organization/', include('organization.urls')),
-    path('department/', include('department.urls')),
+    path('organization/', include('organizations.urls')),
+    path('department/', include('departments.urls')),
     path('teams/', include('teams.urls')),
-    path('users/', include('users.urls')),
-    path('tasks/', include('tasks.urls')),
+    # path('tasks/', include('tasks.urls')),
 ]
