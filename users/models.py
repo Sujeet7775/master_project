@@ -8,11 +8,21 @@ import uuid
 from django.db import models
 
 class Permission(models.Model):
-    name = models.CharField(max_length=100, unique=True)  # e.g., 'create_user', 'view_team', etc.
-    description = models.TextField(blank=True)
+    MODEL_CHOICES = [
+        ('organization', 'Organization'),
+        ('department', 'Department'),
+        ('team', 'Team'),
+        # Add more models as needed
+    ]
+
+    model_name = models.CharField(max_length=100, choices=MODEL_CHOICES)
+    can_view = models.BooleanField(default=False)
+    can_create = models.BooleanField(default=False)
+    can_edit = models.BooleanField(default=False)
+    can_delete = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f"{self.model_name} perms"
     class Meta:
         verbose_name_plural = "5. Permission"
     
