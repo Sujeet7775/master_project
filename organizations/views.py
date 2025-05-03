@@ -5,3 +5,5 @@ from django.shortcuts import render
 def organization_list(request):
     # This view will list all organizations
     return HttpResponse("List of organizations")
+
+

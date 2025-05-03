@@ -146,23 +146,13 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'My API Documentation',
-    'DESCRIPTION': 'API for managing my resources',
+    'TITLE': 'API Documentation',
+    'DESCRIPTION': 'API for Organization Management',
     'VERSION': '1.0.0',
      'TAGS': [
         {'name': 'Organization', 'description': 'Endpoints related to organizations'},
         {'name': 'Department', 'description': 'Endpoints related to departments'},
         {'name': 'Team', 'description': 'Endpoints related to teams'},
+        {'name': 'User', 'description': 'Endpoints related to users'},
     ],
 }
-
-
-# SPECTACULAR_SETTINGS = {
-#     'TITLE': 'My API',
-#     'VERSION': '1.0.0',
-#     'TAGS': [
-#         {'name': 'Organization', 'description': 'All organization-related endpoints'},
-#         {'name': 'Department', 'description': 'All department-related endpoints'},
-#          {'name': 'Team', 'description': 'Manage teams'},
-#     ],
-# }

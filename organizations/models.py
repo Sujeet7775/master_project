@@ -14,3 +14,15 @@ class Organization(BaseModel):
     
     class Meta:
         verbose_name_plural = "1. Organizations"
+        
+        # permissions = [
+            
+        #     ("create_organization", "Can create organization"),
+        #     ("read_organization", "Can read organization"),
+        #     ("update_organization", "Can update organization"),
+        #     ("delete_organization", "Can delete organization"),
+        
+        # ]
+        
+        
+        

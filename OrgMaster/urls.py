@@ -33,12 +33,14 @@ urlpatterns = [
     path('organization/', include('organizations.urls')),
     path('department/', include('departments.urls')),
     path('teams/', include('teams.urls')),
+    # path('permissions/', include('permissions.urls')),
     # path('tasks/', include('tasks.urls')),
     
     # API routes
     path('api/organization/', include('organizations.api_urls')),
     path('api/department/', include('departments.api_urls')),
     path('api/teams/', include('teams.api_urls')),
+    path('api/users/', include('users.api_urls')),
     
     # 🔍 Swagger / API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),

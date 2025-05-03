@@ -5,8 +5,17 @@ from departments.models import Department
 from teams.models import Team
 from django.contrib.auth.models import AbstractUser
 import uuid
+from django.db import models
 
+class Permission(models.Model):
+    name = models.CharField(max_length=100, unique=True)  # e.g., 'create_user', 'view_team', etc.
+    description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "5. Permission"
+    
 class User(AbstractUser,BaseModel):
     user_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     
@@ -24,10 +33,13 @@ class User(AbstractUser,BaseModel):
 
     approval_1 = models.CharField(max_length=100, null=True, blank=True)
     approval_2 = models.CharField(max_length=100, null=True, blank=True)
+    
+    permissions = models.ManyToManyField('Permission', blank=True, related_name='users')
+
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
     
-    
     class Meta:
-        verbose_name_plural = "4. User"
+        verbose_name_plural = "4. Users"
+    
