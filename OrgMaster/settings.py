@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'teams',
     'users',
     'rest_framework',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,29 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'My API Documentation',
+    'DESCRIPTION': 'API for managing my resources',
+    'VERSION': '1.0.0',
+     'TAGS': [
+        {'name': 'Organization', 'description': 'Endpoints related to organizations'},
+        {'name': 'Department', 'description': 'Endpoints related to departments'},
+        {'name': 'Team', 'description': 'Endpoints related to teams'},
+    ],
+}
+
+
+# SPECTACULAR_SETTINGS = {
+#     'TITLE': 'My API',
+#     'VERSION': '1.0.0',
+#     'TAGS': [
+#         {'name': 'Organization', 'description': 'All organization-related endpoints'},
+#         {'name': 'Department', 'description': 'All department-related endpoints'},
+#          {'name': 'Team', 'description': 'Manage teams'},
+#     ],
+# }

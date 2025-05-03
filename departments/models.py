@@ -1,7 +1,6 @@
 from django.db import models
 from core.models import BaseModel
 from organizations.models import Organization
-import uuid
 
 class Department(BaseModel):
     department_id = models.AutoField(primary_key=True)
