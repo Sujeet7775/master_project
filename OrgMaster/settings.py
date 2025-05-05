@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'drf_spectacular',
+    'modulemaster',
 ]
 
 MIDDLEWARE = [
@@ -154,5 +155,6 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Department', 'description': 'Endpoints related to departments'},
         {'name': 'Team', 'description': 'Endpoints related to teams'},
         {'name': 'User', 'description': 'Endpoints related to users'},
+        {'name': 'ModuleMaster', 'description': 'Endpoints related to ModuleMaster'},
     ],
 }
