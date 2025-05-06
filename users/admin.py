@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django import forms
-from .models import User, Permission, Organization, Department, Team
+from .models import User
 
 class CustomUserChangeForm(forms.ModelForm):
     class Meta:
@@ -21,22 +21,15 @@ class CustomUserAdmin(BaseUserAdmin):
                 'mobile_number', 'role',
                 'state', 'city', 'country', 'pincode',
                 'approval_1', 'approval_2',
-                'permissions',
+                
             )
         }),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
         ('Status', {'fields': ('is_active', 'is_superuser')}),
     )
-
-    filter_horizontal = ('permissions',)
     list_display = ('username', 'email', 'first_name', 'last_name', 'organization', 'role', 'is_active')
     list_filter = ('organization', 'department', 'team', 'is_active', 'is_superuser')
     search_fields = ('username', 'email', 'first_name', 'last_name', 'mobile_number')
     ordering = ('username',)
-
-@admin.register(Permission)
-class PermissionAdmin(admin.ModelAdmin):
-    list_display = ('model_name', 'can_view', 'can_create', 'can_edit', 'can_delete')
-    search_fields = ('model_name',)
 
 

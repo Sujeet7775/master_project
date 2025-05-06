@@ -42,6 +42,7 @@ urlpatterns = [
     path('api/teams/', include('teams.api_urls')),
     path('api/users/', include('users.api_urls')),
     path('api/modulemaster/', include('modulemaster.api_urls')),
+    path('api/permissions/', include('permissions.api_urls')),
     
     # 🔍 Swagger / API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
