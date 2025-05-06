@@ -1,25 +1,11 @@
-# # serializers.py
-# from rest_framework import serializers
-# from .models import User_Permission
-
-# class PermissionSnapshotSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User_Permission
-#         fields = ['id', 'user', 'module', 'permissions']
-#         read_only_fields = ['id']
-
-
-
-
-# serializers.py
 from rest_framework import serializers
 from .models import User_Permission
 
-class PermissionSnapshotSerializer(serializers.ModelSerializer):
+class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = User_Permission
         fields = ['id', 'user', 'module', 'permissions']
-        read_only_fields = ['id', 'created_at']
+        read_only_fields = ['id']
 
     def validate_permissions(self, value):
         required_keys = {'create', 'update', 'view'}

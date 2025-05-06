@@ -1,6 +1,5 @@
 from django.db import models
 from core.models import BaseModel
-from modulemaster.models import ModuleMaster
 from organizations.models import Organization
 from departments.models import Department
 from teams.models import Team
