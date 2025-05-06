@@ -10,7 +10,7 @@ class Organization(BaseModel):
     industry_type = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.organisation_name
+        return str(self.organisation_id)
     
     class Meta:
         verbose_name_plural = "1. Organizations"

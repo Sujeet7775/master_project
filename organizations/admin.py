@@ -12,7 +12,7 @@ class DepartmentInline(admin.TabularInline):
 
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ('organisation_name', 'address', "industry_type")
-    search_fields = ('organisation_name', 'address', "industry_type")
+    list_display = ('organisation_id','organisation_name', 'address', "industry_type")
+    search_fields = ('organisation_id','organisation_name', 'address', "industry_type")
     inlines = [DepartmentInline]
     readonly_fields = ('created_at', 'updated_at', 'created_by', 'updated_by')  

@@ -11,7 +11,7 @@ class Team(BaseModel):
     team_lead = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.team_name
+        return str(self.team_id)
     
     class Meta:
         verbose_name_plural = "3. Teams"

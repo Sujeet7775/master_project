@@ -11,7 +11,7 @@ class TeamInline(admin.TabularInline):
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ( 'department_name', 'head_of_department', 'organisation')
+    list_display = ( 'department_id','department_name', 'head_of_department', 'organisation')
     search_fields = ('department_name', 'head_of_department')
     list_filter = ('organisation',)
     inlines = [TeamInline]
