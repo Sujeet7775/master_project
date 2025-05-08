@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'modulemaster',
+    'permissions',
+    'rest_framework.authtoken',  # ✅ Required for token auth
+
 ]
 
 MIDDLEWARE = [
@@ -144,17 +147,44 @@ AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+     'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
+
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'API Documentation',
     'DESCRIPTION': 'API for Organization Management',
     'VERSION': '1.0.0',
-     'TAGS': [
+    'TAGS': [
         {'name': 'Organization', 'description': 'Endpoints related to organizations'},
         {'name': 'Department', 'description': 'Endpoints related to departments'},
         {'name': 'Team', 'description': 'Endpoints related to teams'},
         {'name': 'User', 'description': 'Endpoints related to users'},
         {'name': 'ModuleMaster', 'description': 'Endpoints related to ModuleMaster'},
+        {'name': 'Permissions', 'description': 'Endpoints related to permissions'},
+        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},  # ✅ Add this
+
     ],
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,
+    },
+    'SECURITY': [{'TokenAuth': []}],
+    'COMPONENTS': {
+        'securitySchemes': {
+            'TokenAuth': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'Authorization',
+                'description': 'Use format: Token <your-token>',
+            }
+        },
+    },
 }

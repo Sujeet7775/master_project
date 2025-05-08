@@ -10,54 +10,61 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from .models import Organization
 from .serializers import OrganizationSerializer
-from .permissions import OrganizationCRUDPermissions
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.permissions import IsAdminUser
-from django.contrib.auth.models import User, Permission
+from permissions.permissions import HasModulePermission
+from rest_framework.authentication import TokenAuthentication
+
 
 @extend_schema(tags=["Organization"])
+class OrganizationViewSet(viewsets.ModelViewSet):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    permission_classes = [IsAuthenticated, HasModulePermission]
+    # authentication_classes = [TokenAuthentication]  # Only Token-based auth is allowed
+    module_name = "Organization"
+
+    def get_permissions(self):
+        # Map DRF actions to permission names
+        action_map = {
+            "create": "create",
+            "list": "read",
+            "retrieve": "view",
+            "update": "update",
+            "partial_update": "update",
+            "destroy": "delete",
+        }
+        self.required_permission = action_map.get(self.action)
+        return [permission() for permission in self.permission_classes]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # class OrganizationViewSet(viewsets.ModelViewSet):
 #     queryset = Organization.objects.all()
 #     serializer_class = OrganizationSerializer
 #     lookup_field = 'organisation_id'
-    
+#     permission_classes = [IsAuthenticated, IsAdminUser]
 
-
-# Create your views here.
-class OrganizationViewSet(viewsets.ModelViewSet):
-    queryset = Organization.objects.all()
-    serializer_class = OrganizationSerializer
-    lookup_field = 'organisation_id'
-    permission_classes = [IsAuthenticated, IsAdminUser, OrganizationCRUDPermissions]
-    # permission_classes = [OrganizationCRUDPermissions]
-
-    def get_permissions(self):
-        if self.action in ['list', 'retrieve']:
-            self.permission_classes = [IsAuthenticated]
-        return super().get_permissions()
+#     def get_permissions(self):
+#         if self.action in ['list', 'retrieve']:
+#             self.permission_classes = [IsAuthenticated]
+#         return super().get_permissions()
 
 
 
 
-# class AssignOrgPermissionsView(APIView):
-#     def post(self, request, user_id):
-#         permissions = request.data.get("permissions", [])
-#         try:
-#             user = User.objects.get(id=user_id)
-#         except User.DoesNotExist:
-#             return Response({"error": "User not found"}, status=404)
 
-#         # Clear existing org permissions
-#         content_type = ContentType.objects.get(app_label='organizations', model='organization')
-#         org_permissions = Permission.objects.filter(content_type=content_type)
-#         user.user_permissions.remove(*org_permissions)
 
-#         # Assign new ones
-#         for codename in permissions:
-#             try:
-#                 perm = Permission.objects.get(codename=codename)
-#                 user.user_permissions.add(perm)
-#             except Permission.DoesNotExist:
-#                 continue
 
-#         return Response({"status": "Permissions updated successfully"}, status=200)
