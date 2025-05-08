@@ -1,71 +1,58 @@
-from rest_framework.permissions import BasePermission, IsAuthenticated
 from rest_framework.views import APIView
-from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from permissions.serializers import PermissionSerializer
-from .models import User_Permission
+from rest_framework import status
+from rest_framework.permissions import BasePermission, IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from drf_spectacular.utils import extend_schema
 from django.contrib.auth import get_user_model
+from permissions.serializers import PermissionSerializer
+from .models import User_Permission
+import logging
 
+logger = logging.getLogger(__name__)
 User = get_user_model()
-
-class CreateSomethingView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, user_id):
-        if str(request.user.id) != str(user_id):
-            return Response({"detail": "You are not authorized for this user."}, status=status.HTTP_403_FORBIDDEN)
-
-        # Proceed with creation
-        return Response({"message": "Authorized and created."})
-
 class HasModulePermission(BasePermission):
-    def has_permission(self, request, view):
-        print("Authenticated user:", request.user)  # This should be Ram_123, not admin
+    """
+    Custom permission that checks whether the authenticated user has the required
+    action permission for a specific module.
+    """
 
-        print(f"🧪 Checking permission for: {request.user}")
-        print(f"➡️  Action: {view.action}")
-        
-        if not request.user or not request.user.is_authenticated:
-            print("❌ User is not authenticated")
+    def has_permission(self, request, view):
+        user = request.user
+
+        if not user or not user.is_authenticated:
+            logger.warning("User is not authenticated.")
             return False
 
         module = getattr(view, "module_name", None)
-        action = getattr(view, "required_permission", None)
+        required_action = getattr(view, "required_permission", None)
 
-        print(f"📦 Module: {module}, 🔐 Action: {action}")
-
-        if not module or not action:
-            print("❌ Module or action not defined")
+        if not module or not required_action:
+            logger.warning("Module or required permission not specified on the view.")
             return False
 
-        perms = User_Permission.objects.filter(user=request.user, module__iexact=module)
-        print(f"🔍 Found permissions: {perms}")
+        permissions_qs = User_Permission.objects.filter(user=user, module__iexact=module)
+        logger.debug(f"User '{user}' has module permissions: {permissions_qs}")
 
-        for perm in perms:
-            print(f"➡️  Permissions object: {perm.permissions}")
-            if perm.permissions.get(action.lower(), False):
-                print("✅ Permission granted")
+        for perm in permissions_qs:
+            if perm.permissions.get(required_action.lower(), False):
+                logger.info(f"Permission granted for {user} on {module}:{required_action}")
                 return True
 
-        print("❌ Permission denied")
+        logger.warning(f"Permission denied for {user} on {module}:{required_action}")
         return False
-    
-from rest_framework.authentication import TokenAuthentication
 
 
-@extend_schema(tags=["Authentication & Permissions"])
+@extend_schema(tags=["Authentication & Permissions"],responses=PermissionSerializer)
 class MyPermissionsView(APIView):
     authentication_classes = [TokenAuthentication]
-
     permission_classes = [IsAuthenticated]
-    
+
     def get(self, request, user_id):
         try:
             User.objects.get(id=user_id)
         except User.DoesNotExist:
-            return Response({"detail": "User not found"}, status=404)
+            return Response({"detail": "User not found."}, status=status.HTTP_404_NOT_FOUND)
 
         permissions = User_Permission.objects.filter(user_id=user_id)
         serializer = PermissionSerializer(permissions, many=True)
