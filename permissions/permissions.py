@@ -1,5 +1,6 @@
 from rest_framework.permissions import BasePermission, IsAuthenticated
 from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from permissions.serializers import PermissionSerializer
@@ -9,8 +10,23 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+class CreateSomethingView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, user_id):
+        if str(request.user.id) != str(user_id):
+            return Response({"detail": "You are not authorized for this user."}, status=status.HTTP_403_FORBIDDEN)
+
+        # Proceed with creation
+        return Response({"message": "Authorized and created."})
+
 class HasModulePermission(BasePermission):
     def has_permission(self, request, view):
+        print("Authenticated user:", request.user)  # This should be Ram_123, not admin
+
+        print(f"🧪 Checking permission for: {request.user}")
+        print(f"➡️  Action: {view.action}")
+        
         if not request.user or not request.user.is_authenticated:
             print("❌ User is not authenticated")
             return False
@@ -18,30 +34,31 @@ class HasModulePermission(BasePermission):
         module = getattr(view, "module_name", None)
         action = getattr(view, "required_permission", None)
 
-        print(f"🔐 Authenticated user: {request.user}")
-        print(f"🔎 Checking module: {module}, required action: {action}")
+        print(f"📦 Module: {module}, 🔐 Action: {action}")
 
         if not module or not action:
+            print("❌ Module or action not defined")
             return False
 
         perms = User_Permission.objects.filter(user=request.user, module__iexact=module)
-
-        if not perms.exists():
-            print(f"❌ No permissions found for user {request.user} in module '{module}'")
-            return False
+        print(f"🔍 Found permissions: {perms}")
 
         for perm in perms:
-            print(f"✅ Found permissions: {perm.permissions}")
+            print(f"➡️  Permissions object: {perm.permissions}")
             if perm.permissions.get(action.lower(), False):
                 print("✅ Permission granted")
                 return True
 
         print("❌ Permission denied")
         return False
+    
+from rest_framework.authentication import TokenAuthentication
 
 
 @extend_schema(tags=["Authentication & Permissions"])
 class MyPermissionsView(APIView):
+    authentication_classes = [TokenAuthentication]
+
     permission_classes = [IsAuthenticated]
     
     def get(self, request, user_id):
@@ -53,27 +70,3 @@ class MyPermissionsView(APIView):
         permissions = User_Permission.objects.filter(user_id=user_id)
         serializer = PermissionSerializer(permissions, many=True)
         return Response(serializer.data)
-
-    # def get(self, request):
-    #     user = request.user
-    #     print(f"🔍 Request user: {user}, ID: {user.id}, Is superuser: {user.is_superuser}")
-
-    #     user_permissions = User_Permission.objects.filter(user=user)
-    #     print(f"🔍 User permissions for {user}: {user_permissions}")
-
-    #     permissions_by_module = {}
-
-    #     for perm in user_permissions:
-    #         module = perm.module.strip().title()  # Normalize for output
-    #         if module not in permissions_by_module:
-    #             permissions_by_module[module] = perm.permissions.copy()
-    #         else:
-    #             for key, value in perm.permissions.items():
-    #                 permissions_by_module[module][key] = (
-    #                     permissions_by_module[module].get(key, False) or value
-    #                 )
-
-    #     return Response({
-    #         "user": str(user),
-    #         "permissions": permissions_by_module
-    #     })

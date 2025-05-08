@@ -12,12 +12,15 @@ from .models import Organization
 from .serializers import OrganizationSerializer
 from rest_framework.permissions import IsAuthenticated
 from permissions.permissions import HasModulePermission
+from rest_framework.authentication import TokenAuthentication
+
 
 @extend_schema(tags=["Organization"])
 class OrganizationViewSet(viewsets.ModelViewSet):
     queryset = Organization.objects.all()
     serializer_class = OrganizationSerializer
     permission_classes = [IsAuthenticated, HasModulePermission]
+    # authentication_classes = [TokenAuthentication]  # Only Token-based auth is allowed
     module_name = "Organization"
 
     def get_permissions(self):
