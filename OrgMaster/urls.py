@@ -43,7 +43,7 @@ urlpatterns = [
     path('api/users/', include('users.api_urls')),
     path('api/modulemaster/', include('modulemaster.api_urls')),
     path('api/permissions/', include('permissions.api_urls')),
-    
+    path('api/package/', include('package.api_urls')),
     
     
     # 🔍 Swagger / API documentation

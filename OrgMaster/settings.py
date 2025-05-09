@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'modulemaster',
     'permissions',
     'rest_framework.authtoken',  # ✅ Required for token auth
-
+    'package',
 ]
 
 MIDDLEWARE = [
@@ -172,7 +172,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'ModuleMaster', 'description': 'Endpoints related to ModuleMaster'},
         {'name': 'Permissions', 'description': 'Endpoints related to permissions'},
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},  # ✅ Add this
-
+        {'name': 'Package', 'description': 'Endpoints related to packages'},
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,
