@@ -1,16 +1,17 @@
+from warnings import filters
 from rest_framework import viewsets, permissions
 from .models import District
 from .serializers import DistrictAdminSerializer
 from drf_spectacular.utils import extend_schema
+from rest_framework import viewsets, filters, permissions
 
 @extend_schema(tags=["District"])
 class DistrictAdminViewSet(viewsets.ModelViewSet):
     queryset = District.objects.all()
     serializer_class = DistrictAdminSerializer
-    permission_classes = [permissions.IsAdminUser]  # Only admin users can access this
+    permission_classes = [permissions.IsAuthenticated]
     search_fields = ['district_name', 'district_code']  # Add any other fields you want to search on    
-    filterset_fields = ['package']  # Allows filtering by package
-    ordering_fields = ['district_name', 'district_code']  # Allows ordering by these fields
+    filter_backends = [filters.SearchFilter]
     model = District
     
     def get_permissions(self):
