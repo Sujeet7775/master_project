@@ -3,6 +3,6 @@ from rest_framework.routers import DefaultRouter
 from .viewsets import GPMasterViewSet
 
 router = DefaultRouter()
-router.register(r'gp-masters', GPMasterViewSet)
+router.register(r'', GPMasterViewSet)
 
 urlpatterns = router.urls
