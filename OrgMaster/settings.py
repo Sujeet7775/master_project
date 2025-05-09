@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'package',
     'district',
     'block',
+    'gp_master',
 ]
 
 MIDDLEWARE = [
@@ -177,6 +178,8 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Package', 'description': 'Endpoints related to packages'},
         {'name': 'District', 'description': 'Endpoints related to districts'},
         {'name': 'Block', 'description': 'Endpoints related to blocks'},
+        {'name': 'GP Master', 'description': 'Endpoints related to GP Master'},
+    
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,
