@@ -13,6 +13,6 @@ class Package(BaseModel):
     
 
     def __str__(self):
-        return self.package_name
+        return str(self.id)
     class Meta:
             ordering = ['-created_at']
