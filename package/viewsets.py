@@ -1,4 +1,3 @@
-# views.py
 from rest_framework import viewsets, filters, permissions
 from drf_spectacular.utils import extend_schema
 from .models import Package
