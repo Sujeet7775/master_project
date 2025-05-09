@@ -1,19 +1,19 @@
+from rest_framework import viewsets, filters, permissions
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import Block
-from .serializers import BlockSerializer
+from .models import GPMaster
+from .serializers import GPMasterSerializer
 from drf_spectacular.utils import extend_schema
-from rest_framework import viewsets, filters, permissions
 
-@extend_schema(tags=["Block"])
-class BlockViewSet(viewsets.ModelViewSet):
-    queryset = Block.objects.all()
-    serializer_class = BlockSerializer
-    permission_classes = [permissions.IsAuthenticated]
+@extend_schema(tags=["GP Master"])
+class GPMasterViewSet(viewsets.ModelViewSet):
+    queryset = GPMaster.objects.all()
+    serializer_class = GPMasterSerializer
+    permission_classes = [IsAuthenticated]
     filter_backends = [filters.SearchFilter]
-    search_fields = ['block_name', 'block_code']
-    model = Block
-
+    search_fields = ['gp_name', 'lgd_code', 'district__name', 'block__name', 'package__package_name']   
+    model = GPMaster
+    
     def get_permissions(self):
         # Map DRF actions to permission names
         action_map = {
