@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'permissions',
     'rest_framework.authtoken',  # ✅ Required for token auth
     'package',
-    'district'
+    'district',
+    'block',
 ]
 
 MIDDLEWARE = [
@@ -175,6 +176,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},  # ✅ Add this
         {'name': 'Package', 'description': 'Endpoints related to packages'},
         {'name': 'District', 'description': 'Endpoints related to districts'},
+        {'name': 'Block', 'description': 'Endpoints related to blocks'},
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,
