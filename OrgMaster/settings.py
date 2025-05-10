@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'modulemaster',
     'permissions',
     'rest_framework.authtoken',  # ✅ Required for token auth
-
+    'package',
+    'district',
+    'block',
+    'gp_master',
 ]
 
 MIDDLEWARE = [
@@ -171,14 +174,14 @@ SPECTACULAR_SETTINGS = {
         {'name': 'User', 'description': 'Endpoints related to users'},
         {'name': 'ModuleMaster', 'description': 'Endpoints related to ModuleMaster'},
         {'name': 'Permissions', 'description': 'Endpoints related to permissions'},
-        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},  # ✅ Add this
-
+        {'name': 'Package', 'description': 'Endpoints related to packages'},
+        {'name': 'District', 'description': 'Endpoints related to districts'},
+        {'name': 'Block', 'description': 'Endpoints related to blocks'},
+        {'name': 'GP Master', 'description': 'Endpoints related to GP Master'},
+        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,
-    'SWAGGER_UI_SETTINGS': {
-        'persistAuthorization': True,
-    },
     'SECURITY': [{'TokenAuth': []}],
     'COMPONENTS': {
         'securitySchemes': {
@@ -190,4 +193,10 @@ SPECTACULAR_SETTINGS = {
             }
         },
     },
+}
+
+SPECTACULAR_SWAGGER_UI_SETTINGS = {
+    'persistAuthorization': True,
+    'docExpansion': 'none',  # Collapsed sections
+    'tagsSorter': 'alpha',  # Sort tags alphabetically
 }

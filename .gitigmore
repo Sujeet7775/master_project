@@ -1,1 +1,7 @@
-myenv/
+# Ignore myenv file
+myenv
+
+# Other common ignores (optional)
+.DS_Store
+*.log
+.env
