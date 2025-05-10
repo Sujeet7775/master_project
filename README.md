@@ -81,9 +81,108 @@ Specify the license under which the project is distributed.
 Provide contact information for inquiries or support.
 ```
 
-### Notes
-- Replace placeholders like `<repository-url>` and `<project-directory>` with actual values.
-- Customize the sections as per your project's specific needs.
-- Ensure the flowchart is properly rendered in the Markdown where indicated. 
+project/
+├── api/
+│   ├── department/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── package_master/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── category/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── warehouse/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── suppliers/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── module_master/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── user_types_master/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── team/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── district_master/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── sub_category/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── material/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── users/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── block_master/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── uom/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   ├── gst/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── tests.py
+│   └── hsn_code/
+│       ├── models.py
+│       ├── serializers.py
+│       ├── views.py
+│       ├── urls.py
+│       └── tests.py
+├── core/
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+└── requirements.txt
 
-Feel free to adjust any sections or content as necessary!
