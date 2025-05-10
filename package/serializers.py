@@ -19,3 +19,5 @@ class PackageSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         validated_data['updated_by'] = user
         return super().update(instance, validated_data)
+    
+    

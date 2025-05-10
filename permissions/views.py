@@ -27,7 +27,7 @@ class VerifyTokenView(APIView):
     """
     View to verify the token and check if it's valid.
     """
-
+    
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 

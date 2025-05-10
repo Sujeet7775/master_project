@@ -46,10 +46,10 @@ urlpatterns = [
     path('api/package/', include('package.api_urls')),
     path('api/district/', include('district.api_urls')),
     path('api/block/', include('block.api_urls')),
-
+    path('api/gp_master/', include('gp_master.api_urls')),
 
     # 🔍 Swagger / API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  
 ]
