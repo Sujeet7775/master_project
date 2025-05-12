@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'block',
     'gp_master',
     'category',
+    'subcategory',
 ]
 
 MIDDLEWARE = [
@@ -179,8 +180,11 @@ SPECTACULAR_SETTINGS = {
         {'name': 'District', 'description': 'Endpoints related to districts'},
         {'name': 'Block', 'description': 'Endpoints related to blocks'},
         {'name': 'GP Master', 'description': 'Endpoints related to GP Master'},
-        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
         {'name': 'Category', 'description': 'Endpoints related to categories'},
+        {'name': 'Subcategory', 'description': 'Endpoints related to subcategories'},
+        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
+        
+        
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,

@@ -15,4 +15,4 @@ class Category(BaseModel):
         unique_together = ('category_name',)
     
     def __str__(self):
-        return self.category_name
+        return str(self.id)
