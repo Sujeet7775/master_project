@@ -47,6 +47,7 @@ urlpatterns = [
     path('api/district/', include('district.api_urls')),
     path('api/block/', include('block.api_urls')),
     path('api/gp_master/', include('gp_master.api_urls')),
+    path('api/category/', include('category.api_urls')),
 
     # 🔍 Swagger / API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
