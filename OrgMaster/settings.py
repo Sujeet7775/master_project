@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'uom',
     'gst',
     'hsn',
+    'material',
 ]
 
 MIDDLEWARE = [
@@ -185,10 +186,14 @@ SPECTACULAR_SETTINGS = {
         {'name': 'GP Master', 'description': 'Endpoints related to GP Master'},
         {'name': 'Category', 'description': 'Endpoints related to categories'},
         {'name': 'Subcategory', 'description': 'Endpoints related to subcategories'},
-        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
         {'name': 'UOM', 'description': 'Endpoints related to UOM'},
         {'name': 'GST', 'description': 'Endpoints related to GST'},
         {'name': 'HSN', 'description': 'Endpoints related to HSN'},
+        {'name': 'Material', 'description': 'Endpoints related to materials'},
+        
+        
+        # 'Authentication'
+        {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,
