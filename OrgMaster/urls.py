@@ -50,6 +50,7 @@ urlpatterns = [
     path('api/category/', include('category.api_urls')),
     path('api/subcategory/', include('subcategory.api_urls')),
     path('api/uom/', include('uom.api_urls')),
+    path('api/gst/', include('gst.api_urls')),
 
 
     # 🔍 Swagger / API documentation
