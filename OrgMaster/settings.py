@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'gst',
     'hsn',
     'material',
+    'warehouse',
 ]
 
 MIDDLEWARE = [
@@ -190,7 +191,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'GST', 'description': 'Endpoints related to GST'},
         {'name': 'HSN', 'description': 'Endpoints related to HSN'},
         {'name': 'Material', 'description': 'Endpoints related to materials'},
-        
+        {'name': 'Warehouse', 'description': 'Endpoints related to warehouses'},
         
         # 'Authentication'
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
