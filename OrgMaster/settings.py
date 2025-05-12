@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'subcategory',
     'uom',
     'gst',
+    'hsn',
 ]
 
 MIDDLEWARE = [
@@ -187,6 +188,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
         {'name': 'UOM', 'description': 'Endpoints related to UOM'},
         {'name': 'GST', 'description': 'Endpoints related to GST'},
+        {'name': 'HSN', 'description': 'Endpoints related to HSN'},
     ],
     'COMPONENT_SPLIT_REQUEST': True,
     'SERVE_INCLUDE_SCHEMA': False,
