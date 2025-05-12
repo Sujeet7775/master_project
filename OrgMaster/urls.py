@@ -49,10 +49,9 @@ urlpatterns = [
     path('api/gp_master/', include('gp_master.api_urls')),
     path('api/category/', include('category.api_urls')),
     path('api/subcategory/', include('subcategory.api_urls')),
-   
-   
-   
-   
+    path('api/uom/', include('uom.api_urls')),
+
+
     # 🔍 Swagger / API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
