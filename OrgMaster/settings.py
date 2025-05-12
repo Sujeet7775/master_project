@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'gp_master',
     'category',
     'subcategory',
+    'uom',
 ]
 
 MIDDLEWARE = [
@@ -183,7 +184,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Category', 'description': 'Endpoints related to categories'},
         {'name': 'Subcategory', 'description': 'Endpoints related to subcategories'},
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
-        
+        {'name': 'UOM', 'description': 'Interactive API documentation'},
         
     ],
     'COMPONENT_SPLIT_REQUEST': True,
