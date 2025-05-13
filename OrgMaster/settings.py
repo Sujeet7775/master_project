@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'material',
     'warehouse',
     'user_types',
+    'supplier',
 ]
 
 MIDDLEWARE = [
@@ -193,6 +194,8 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Material', 'description': 'Endpoints related to materials'},
         {'name': 'Warehouse', 'description': 'Endpoints related to warehouses'},
         {'name': 'User Types', 'description': 'Endpoints related to user types'},
+        {'name': 'Supplier', 'description': 'Endpoints related to suppliers'},
+        
         # 'Authentication'
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
     ],
