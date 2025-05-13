@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'hsn',
     'material',
     'warehouse',
+    'user_types',
 ]
 
 MIDDLEWARE = [
@@ -99,15 +100,14 @@ DATABASES = {
     }
 }
 
-#PostgreSQL Configuration
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'your_database_name',
-#         'USER': 'your_postgres_user',
-#         'PASSWORD': 'your_password',
-#         'HOST': 'localhost',  # or your DB host
-#         'PORT': '5432',        # default PostgreSQL port
+#         'NAME': 'master_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',  # Set to 'localhost' or your database server IP
+#         'PORT': '5433',  # Default PostgreSQL port
 #     }
 # }
 
@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -192,7 +192,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'HSN', 'description': 'Endpoints related to HSN'},
         {'name': 'Material', 'description': 'Endpoints related to materials'},
         {'name': 'Warehouse', 'description': 'Endpoints related to warehouses'},
-        
+        {'name': 'User Types', 'description': 'Endpoints related to user types'},
         # 'Authentication'
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
     ],
