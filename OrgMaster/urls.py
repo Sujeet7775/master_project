@@ -55,6 +55,9 @@ urlpatterns = [
     path('api/material/', include('material.api_urls')),
     path('api/warehouse/', include('warehouse.api_urls')),
     path('api/user-types/', include('user_types.api_urls')),
+    path('api/supplier/', include('supplier.api_urls')),
+
+
 
     # 🔍 Swagger / API documentation
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
