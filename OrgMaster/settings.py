@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'hsn',
     'material',
     'warehouse',
+    'user_types',
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -192,7 +193,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'HSN', 'description': 'Endpoints related to HSN'},
         {'name': 'Material', 'description': 'Endpoints related to materials'},
         {'name': 'Warehouse', 'description': 'Endpoints related to warehouses'},
-        
+        {'name': 'User Types', 'description': 'Endpoints related to user types'},
         # 'Authentication'
         {'name': 'Authentication & Permissions', 'description': 'Auth token + user-specific permission summary'},
     ],
