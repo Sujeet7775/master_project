@@ -1,5 +1,4 @@
 from django.db import models
-from block.models import User
 from core.models import BaseModel
 from user_types import USER_TYPE_CHOICES
 

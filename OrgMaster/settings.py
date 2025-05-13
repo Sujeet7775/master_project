@@ -100,15 +100,14 @@ DATABASES = {
     }
 }
 
-#PostgreSQL Configuration
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'your_database_name',
-#         'USER': 'your_postgres_user',
-#         'PASSWORD': 'your_password',
-#         'HOST': 'localhost',  # or your DB host
-#         'PORT': '5432',        # default PostgreSQL port
+#         'NAME': 'master_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',  # Set to 'localhost' or your database server IP
+#         'PORT': '5433',  # Default PostgreSQL port
 #     }
 # }
 
